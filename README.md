@@ -57,7 +57,7 @@ sudo -u jenkins ssh-keyscan github.com | sudo tee -a /var/lib/jenkins/.ssh/known
 
 #### 6. Clone the Repository
 ```bash
-sudo -u jenkins git clone git@github.com:hkaibara/cynapse-init.git /tmp/jenkins-bootstrap
+sudo -u jenkins git clone git@github.com:hkaibara/node-js-sample.git /tmp/jenkins-bootstrap
 ```
 
 #### 7. Run Setup Script
@@ -77,7 +77,7 @@ The setup script will automatically install and configure:
 
 ### Application Structure
 ```
-cynapse-init/
+/
 ├── index.js              # Main Express application
 ├── package.json          # Node.js dependencies and scripts
 ├── dockerfile            # Multi-stage Docker build configuration
@@ -131,8 +131,8 @@ The Jenkins pipeline automates the entire deployment workflow:
 
 1. **Clone the repository**:
 ```bash
-git clone git@github.com:hkaibara/cynapse-init.git
-cd cynapse-init
+git clone git@github.com:hkaibara/node-js-sample.git
+cd node-js-sample
 ```
 
 2. **Install dependencies**:
