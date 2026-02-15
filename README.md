@@ -82,8 +82,8 @@ cynapse-init/
 ├── package.json          # Node.js dependencies and scripts
 ├── dockerfile            # Multi-stage Docker build configuration
 ├── Jenkinsfile           # Jenkins pipeline definition
-├── app.json              # Application metadata
-├── public/               # Static files directory
+├── app.json              
+├── public/               
 └── local-dev/            # Local development setup scripts
     ├── setup.sh          # Automated installation script
     ├── jenkins.yaml      # Jenkins Configuration as Code (JCasC)
