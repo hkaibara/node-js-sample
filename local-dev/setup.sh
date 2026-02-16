@@ -11,7 +11,7 @@ sudo apt install -y openjdk-17-jdk docker.io nginx git curl gnupg openssl rsync 
 
 # jenkins repo setup
 sudo mkdir -p /usr/share/keyrings
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 # update again then install jenkins
@@ -74,7 +74,7 @@ server {
     ssl_certificate_key /etc/nginx/ssl/app.key;
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers HIGH:!aNULL:!MD5;
-    
+
     location / {
         proxy_pass http://127.0.0.1:5000;
         proxy_http_version 1.1;
