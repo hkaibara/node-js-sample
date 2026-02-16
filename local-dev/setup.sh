@@ -72,12 +72,25 @@ server {
     listen 443 ssl;
     ssl_certificate /etc/nginx/ssl/app.crt;
     ssl_certificate_key /etc/nginx/ssl/app.key;
-
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    
     location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_set_header Host \$host;
-        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
+}
+server {
+    listen 80;
+    server_name your_domain_or_ip;
+
+    return 301 https://$host$request_uri;
 }
 EOF
 sudo rm -f /etc/nginx/sites-enabled/default
