@@ -1,21 +1,15 @@
+---
 jenkins:
   securityRealm:
     local:
       allowsSignup: false
       users:
-       - id: "admin"
-         password: "password123"
+        - id: "admin"
+          password: "password123"
   authorizationStrategy:
     globalMatrix:
       permissions:
         - "Overall/Administer:admin"
-
-unclassified:
-  githubConfiguration:
-    apiRateLimitChecker: "ThrottleOnOver"
-    endpoints:
-      - apiUri: "https://api.github.com"
-        name: "GitHub"
 
 credentials:
   system:
@@ -40,7 +34,7 @@ jobs:
                   url("${GIT_REPO_URL}")
                   credentials('github-ssh-key')
                 }
-                branches('main')
+                branches('master')
               }
             }
           }
