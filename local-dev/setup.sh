@@ -67,7 +67,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -subj "/C=US/ST=State/L=City/O=Org/CN=node-app.local"
 
 # nginx config.d
-sudo tee /etc/nginx/conf.d/node_app.conf <<EOF
+sudo tee /etc/nginx/conf.d/node_app.conf << 'EOF'
 server {
     listen 443 ssl;
     ssl_certificate /etc/nginx/ssl/app.crt;
